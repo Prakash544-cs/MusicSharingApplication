@@ -8,6 +8,7 @@
             <a class="logoutBtn" (click)="logOut()">Log out</a>
         </div>
     </ng-template>
+  </div>
     <ng-template #doSomethingElse>
       <a class="home"area-label="home" tabindex="0"  routerLink="/home">Home</a>
       <a class="login" area-label="login" tabindex="0"  routerLink="/log-in">Login</a>   
@@ -15,7 +16,7 @@
       
     </ng-template>
   </div>
-</div>
+ 
 <div class="themes">
   <label class="radio-inline">
   <input type="radio" value="ligth" name="theme"   [(ngModel)]="theme" (change)="changeTheme()"> ligth theme

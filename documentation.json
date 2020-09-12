@@ -2052,7 +2052,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-2283a683d1b59f1d6a30a32d065e0d64",
+            "id": "component-HeaderComponent-77cd6f60bafde72b30baa645af703963",
             "file": "src/app/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2088,7 +2088,7 @@
                 },
                 {
                     "name": "isAuthenticated",
-                    "type": "",
+                    "type": "boolean",
                     "optional": false,
                     "description": "",
                     "line": 20
@@ -2134,7 +2134,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40
+                    "line": 42
                 },
                 {
                     "name": "logOut",
@@ -2142,7 +2142,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 50,
                     "modifierKind": [
                         114
                     ]
@@ -2161,7 +2161,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { Store } from '@ngrx/store';\r\nimport { Observable } from 'rxjs';\r\n\r\nimport { Music } from '../models/music';\r\nimport { ThemeService } from '../services/theme-color.service';\r\nimport { LogOut } from '../store/actions/auth.actions';\r\nimport { AppState , selectAuthState } from '../store/app.states';\r\n\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss']\r\n})\r\nexport class HeaderComponent implements OnInit {\r\n\r\n  getState: Observable<any>;\r\n  isAuthenticated: false;\r\n  quotes: Music[];\r\n  user = null;\r\n  theme = 'ligth';\r\n  errorMessage = null;\r\n  \r\n  constructor(private store: Store<AppState>, private router: Router, public themeService: ThemeService) {\r\n    this.getState = this.store.select(selectAuthState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getState.subscribe((state) => {\r\n      if (state){\r\n        this.isAuthenticated = state.isAuthenticated;\r\n        this.user = state.user;\r\n        this.errorMessage = state.errorMessage;\r\n      }\r\n    });\r\n  }\r\n\r\n  changeTheme(): void{\r\n    if (this.theme === 'ligth'){\r\n      this.themeService.setLightTheme();\r\n    } else{\r\n      this.themeService.setDarkTheme();\r\n    }\r\n  }\r\n\r\n  public logOut(): void {\r\n    this.store.dispatch(new LogOut());\r\n    this.router.navigateByUrl('/');\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { Store } from '@ngrx/store';\r\nimport { Observable } from 'rxjs';\r\n\r\nimport { Music } from '../models/music';\r\nimport { ThemeService } from '../services/theme-color.service';\r\nimport { LogOut } from '../store/actions/auth.actions';\r\nimport { AppState , selectAuthState } from '../store/app.states';\r\n\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss']\r\n})\r\nexport class HeaderComponent implements OnInit {\r\n\r\n  getState: Observable<any>;\r\n  isAuthenticated: boolean;\r\n  quotes: Music[];\r\n  user = null;\r\n  theme = 'ligth';\r\n  errorMessage = null;\r\n\r\n  constructor(private store: Store<AppState>, private router: Router, public themeService: ThemeService) {\r\n    this.getState = this.store.select(selectAuthState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getState.subscribe((state) => {\r\n      if (state){\r\n      if (state.isAuthenticated){\r\n        this.isAuthenticated = state.isAuthenticated;\r\n      }\r\n        this.user = state.user;\r\n        this.errorMessage = state.errorMessage;\r\n    }\r\n    });\r\n  }\r\n\r\n  changeTheme(): void{\r\n    if (this.theme === 'ligth'){\r\n      this.themeService.setLightTheme();\r\n    } else{\r\n      this.themeService.setDarkTheme();\r\n    }\r\n  }\r\n\r\n  public logOut(): void {\r\n    this.store.dispatch(new LogOut());\r\n    this.router.navigateByUrl('/');\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2837,7 +2837,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/sign-up/signup.stories.ts",
+                "file": "src/app/components/log-in/login.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -2845,7 +2845,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/log-in/login.stories.ts",
+                "file": "src/app/components/sign-up/signup.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -2861,7 +2861,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/Music/add-music/addMusic.stories.ts",
+                "file": "src/app/components/Music/edit-music/editMusic.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -2869,7 +2869,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/Music/edit-music/editMusic.stories.ts",
+                "file": "src/app/components/Music/add-music/addMusic.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -3013,17 +3013,17 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/sign-up/signup.stories.ts",
-                "type": "Story<SignUpComponent>",
-                "defaultValue": "(args: SignUpComponent) => ({\r\n  component: SignUpComponent,\r\n  template: `<app-sign-up></app-sign-up>`,\r\n  styles: ['./app-sign-up.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [SignUpComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
+                "file": "src/app/components/log-in/login.stories.ts",
+                "type": "Story<LogInComponent>",
+                "defaultValue": "(args: LogInComponent) => ({\r\n  component: LogInComponent,\r\n  template: `<app-log-in></app-log-in>`,\r\n  styles: ['./app-log-in.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [LogInComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/log-in/login.stories.ts",
-                "type": "Story<LogInComponent>",
-                "defaultValue": "(args: LogInComponent) => ({\r\n  component: LogInComponent,\r\n  template: `<app-log-in></app-log-in>`,\r\n  styles: ['./app-log-in.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [LogInComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
+                "file": "src/app/components/sign-up/signup.stories.ts",
+                "type": "Story<SignUpComponent>",
+                "defaultValue": "(args: SignUpComponent) => ({\r\n  component: SignUpComponent,\r\n  template: `<app-sign-up></app-sign-up>`,\r\n  styles: ['./app-sign-up.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [SignUpComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3037,17 +3037,17 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/Music/add-music/addMusic.stories.ts",
-                "type": "Story<AddMusicComponent>",
-                "defaultValue": "(args: AddMusicComponent) => ({\r\n  component: AddMusicComponent,\r\n  template: `<app-add-music></app-add-music>`,\r\n  styles: ['./app-add-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [AddMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
+                "file": "src/app/components/Music/edit-music/editMusic.stories.ts",
+                "type": "Story<EditMusicComponent>",
+                "defaultValue": "(args: EditMusicComponent) => ({\r\n  component: EditMusicComponent,\r\n  template: `<app-edit-music></app-edit-music>`,\r\n  styles: ['./app-edit-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [EditMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/Music/edit-music/editMusic.stories.ts",
-                "type": "Story<EditMusicComponent>",
-                "defaultValue": "(args: EditMusicComponent) => ({\r\n  component: EditMusicComponent,\r\n  template: `<app-edit-music></app-edit-music>`,\r\n  styles: ['./app-edit-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [EditMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
+                "file": "src/app/components/Music/add-music/addMusic.stories.ts",
+                "type": "Story<AddMusicComponent>",
+                "defaultValue": "(args: AddMusicComponent) => ({\r\n  component: AddMusicComponent,\r\n  template: `<app-add-music></app-add-music>`,\r\n  styles: ['./app-add-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [AddMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template1",
@@ -3345,24 +3345,6 @@
                     "defaultValue": "(args: LandingComponent) => ({\r\n  component: LandingComponent,\r\n  template: `<app-landing></app-landing>`,\r\n  styles: ['./landing.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [LandingComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
                 }
             ],
-            "src/app/components/sign-up/signup.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/sign-up/signup.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/sign-up/signup.stories.ts",
-                    "type": "Story<SignUpComponent>",
-                    "defaultValue": "(args: SignUpComponent) => ({\r\n  component: SignUpComponent,\r\n  template: `<app-sign-up></app-sign-up>`,\r\n  styles: ['./app-sign-up.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [SignUpComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
-                }
-            ],
             "src/app/components/log-in/login.stories.ts": [
                 {
                     "name": "Default",
@@ -3397,6 +3379,24 @@
                     "defaultValue": "(args: LogInComponent) => ({\r\n  component: LogInComponent,\r\n  template: `<app-log-in></app-log-in>`,\r\n  styles: ['./app-log-in.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [LogInComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
                 }
             ],
+            "src/app/components/sign-up/signup.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/sign-up/signup.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/sign-up/signup.stories.ts",
+                    "type": "Story<SignUpComponent>",
+                    "defaultValue": "(args: SignUpComponent) => ({\r\n  component: SignUpComponent,\r\n  template: `<app-sign-up></app-sign-up>`,\r\n  styles: ['./app-sign-up.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [SignUpComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
+                }
+            ],
             "src/app/components/Music/list-music/listMusic.stories.ts": [
                 {
                     "name": "Default",
@@ -3415,24 +3415,6 @@
                     "defaultValue": "(args: ListMusicComponent) => ({\r\n  component: ListMusicComponent,\r\n  template: `<app-list-music></app-list-music>`,\r\n  styles: ['./list-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [ListMusicComponent],\r\n    providers: [provideMockStore(), AuthService, Store],\r\n  },\r\n  props: args,\r\n})"
                 }
             ],
-            "src/app/components/Music/add-music/addMusic.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/Music/add-music/addMusic.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/Music/add-music/addMusic.stories.ts",
-                    "type": "Story<AddMusicComponent>",
-                    "defaultValue": "(args: AddMusicComponent) => ({\r\n  component: AddMusicComponent,\r\n  template: `<app-add-music></app-add-music>`,\r\n  styles: ['./app-add-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [AddMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
-                }
-            ],
             "src/app/components/Music/edit-music/editMusic.stories.ts": [
                 {
                     "name": "Default",
@@ -3449,6 +3431,24 @@
                     "file": "src/app/components/Music/edit-music/editMusic.stories.ts",
                     "type": "Story<EditMusicComponent>",
                     "defaultValue": "(args: EditMusicComponent) => ({\r\n  component: EditMusicComponent,\r\n  template: `<app-edit-music></app-edit-music>`,\r\n  styles: ['./app-edit-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [EditMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/components/Music/add-music/addMusic.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/Music/add-music/addMusic.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/Music/add-music/addMusic.stories.ts",
+                    "type": "Story<AddMusicComponent>",
+                    "defaultValue": "(args: AddMusicComponent) => ({\r\n  component: AddMusicComponent,\r\n  template: `<app-add-music></app-add-music>`,\r\n  styles: ['./app-add-music.component.scss'],\r\n  moduleMetadata: {\r\n    imports: [\r\n      RouterTestingModule.withRoutes([]),\r\n      FormsModule,\r\n       HttpClientModule,\r\n      ReactiveFormsModule,\r\n    ],\r\n    declarations: [AddMusicComponent],\r\n    providers: [provideMockStore(), AuthService],\r\n  },\r\n  props: args,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [

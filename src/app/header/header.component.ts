@@ -17,23 +17,21 @@ import { AppState , selectAuthState } from '../store/app.states';
 export class HeaderComponent implements OnInit {
 
   getState: Observable<any>;
-  isAuthenticated: false;
+  isAuthenticated: boolean;
   quotes: Music[];
   user = null;
   theme = 'ligth';
   errorMessage = null;
-  
+
   constructor(private store: Store<AppState>, private router: Router, public themeService: ThemeService) {
     this.getState = this.store.select(selectAuthState);
   }
 
   ngOnInit(): void {
     this.getState.subscribe((state) => {
-      if (state){
         this.isAuthenticated = state.isAuthenticated;
         this.user = state.user;
         this.errorMessage = state.errorMessage;
-      }
     });
   }
 
@@ -45,7 +43,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  public logOut(): void {
+  public logOut(): void{
     this.store.dispatch(new LogOut());
     this.router.navigateByUrl('/');
   }

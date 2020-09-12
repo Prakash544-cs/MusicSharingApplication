@@ -71,3 +71,10 @@
   .login input[type="submit"]:focus {
     border-color: #05a;
   }
+
+  @media screen and (max-width: 576px) {
+    .login {
+     width: 300px;
+      
+    }
+  }

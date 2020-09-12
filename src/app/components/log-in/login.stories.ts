@@ -32,8 +32,8 @@ const Template: Story<LogInComponent> = (args: LogInComponent) => ({
 });
 const Template1: Story<LogInComponent> = (args: LogInComponent) => ({
   component: LogInComponent,
-  template: `<app-log-in></app-log-in>`,
-  styles: ['./app-log-in.component.scss'],
+  // template: `<app-log-in></app-log-in>`,
+  // styles: ['./app-log-in.component.scss'],
   moduleMetadata: {
     imports: [
       RouterTestingModule.withRoutes([]),
@@ -49,11 +49,12 @@ const Template1: Story<LogInComponent> = (args: LogInComponent) => ({
 export const Default = Template.bind({});
 Default.args = {
   viewLogin : true,
+  incorrectError : false
 };
 
 export const Logins = Template1.bind({});
 Logins.args = {
-  viewLogin : true,
+  incorrectError : true
 };
 
 // export const SignUp = Template.bind({});

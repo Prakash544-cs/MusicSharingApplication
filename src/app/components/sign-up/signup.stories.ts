@@ -17,8 +17,8 @@ export default {
 } as Meta;
 const Template: Story<SignUpComponent> = (args: SignUpComponent) => ({
   component: SignUpComponent,
-  template: `<app-sign-up></app-sign-up>`,
-  styles: ['./app-sign-up.component.scss'],
+//   template: `<app-sign-up></app-sign-up>`,
+//   styles: ['./app-sign-up.component.scss'],
   moduleMetadata: {
     imports: [
       RouterTestingModule.withRoutes([]),
@@ -37,9 +37,9 @@ Default.args = {
   viewLogin : true,
 };
 
-// export const SignUp = Template.bind({});
-// SignUp.args = {
-//   viewLogin : true,
-// };
+export const SignUp = Template.bind({});
+SignUp.args = {
+    errorMessage : true
+};
 
 

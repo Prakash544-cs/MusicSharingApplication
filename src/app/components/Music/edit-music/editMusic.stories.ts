@@ -16,8 +16,8 @@ export default {
 } as Meta;
 const Template: Story<EditMusicComponent> = (args: EditMusicComponent) => ({
   component: EditMusicComponent,
-  template: `<app-edit-music></app-edit-music>`,
-  styles: ['./app-edit-music.component.scss'],
+//   template: `<app-edit-music></app-edit-music>`,
+//   styles: ['./app-edit-music.component.scss'],
   moduleMetadata: {
     imports: [
       RouterTestingModule.withRoutes([]),
@@ -34,6 +34,11 @@ const Template: Story<EditMusicComponent> = (args: EditMusicComponent) => ({
 export const Default = Template.bind({});
 Default.args = {
   viewLogin : true,
+};
+
+export const edit = Template.bind({});
+edit.args = {
+  id : 1
 };
 
 // export const SignUp = Template.bind({});

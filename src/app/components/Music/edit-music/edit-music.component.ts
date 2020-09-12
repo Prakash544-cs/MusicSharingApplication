@@ -17,7 +17,7 @@ import {UpdateMusics,ListMusics} from '../../../store/actions/music.actions';
 export class EditMusicComponent implements OnInit {
 
 
-  id: number;
+  id:any;
   music: Music;
   editform: FormGroup;
   getState: Observable<any>;
@@ -40,13 +40,13 @@ export class EditMusicComponent implements OnInit {
       });
       
       this.editform = this.fbs.group({
+          id:[''],
           song: [''],
           movie: [''],   
       })
   
       this.musicService.getMusicById(this.id)
       .subscribe( data => {
-       console.log('d',data);
         this.editform.setValue(data);
       });
   

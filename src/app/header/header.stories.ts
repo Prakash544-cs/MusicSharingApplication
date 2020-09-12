@@ -17,8 +17,8 @@ export default {
 } as Meta;
 const Template: Story<HeaderComponent> = (args: HeaderComponent) => ({
   component: HeaderComponent,
-  template: `<app-header></app-header>`,
-  styles: ['./app-header.component.scss'],
+  // template: `<app-header></app-header>`,
+  // styles: ['./app-header.component.scss'],
   moduleMetadata: {
     imports: [
       RouterTestingModule.withRoutes([]),
@@ -40,16 +40,11 @@ const Template: Story<HeaderComponent> = (args: HeaderComponent) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  quotes: {},
-  isAuthenticated: true
+  user: {},
+  isAuthenticated: false
 };
 export const NotAuth = Template.bind({});
 NotAuth.args = {
   user: {},
-  isAuthenticated: false
+  isAuthenticated: true
 };
-
-// export const Large = Template.bind({});
-// Large.parameters = {
-//   backgrounds: { default: 'facebook' }
-// };

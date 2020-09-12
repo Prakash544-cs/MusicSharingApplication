@@ -18,7 +18,7 @@ export class LogInComponent implements OnInit {
   getState: Observable<any>;
   errorMessage: string | null;
   allSignupData: any;
-  incorrectError = false;
+  incorrectError: boolean;
 
   constructor(private store: Store<AppState>, private authService: AuthService ) {
 
